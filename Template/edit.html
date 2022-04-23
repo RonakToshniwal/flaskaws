@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Edit Page</h1>
+
+
+<form action="http://127.0.0.1:5000/editthis/{{user[0]}}" method="POST">
+    
+  <label for="name">Name:</label><br>
+  <input type="text" name="name" value={{user[1]}} ><br>
+
+  <label for="class">RollNumber:</label><br>
+  <input type="class" name="class" value={{user[2]}}  ><br>
+
+  <label for="roll">Class:</label><br>
+  <input type="text" name="roll" value={{user[3]}} ><br>
+
+
+  <input type="submit" value="Submit">
+</form> 
+
+
+</body>
+</html>
