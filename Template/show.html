@@ -21,17 +21,15 @@ tr:nth-child(even) {
 </head>
 <body>
 
-<h2>HTML Table</h2>
+<h2>Log Table</h2>
 
 <table>
     <thead>
     <tr>
-        <th>id</th>
         <th>name</th>
         <th>class</th>
         <th>rollno.</th>
         <th>Delete</th>
-        <th>Edit</th>
     </tr>
     </thead>
     <tbody>
@@ -41,9 +39,7 @@ tr:nth-child(even) {
         <td>{{row[0]}}</td>
         <td>{{row[1]}}</td>
         <td>{{row[2]}}</td>
-        <td>{{row[3]}}</td>
         <td><a href="/delete/{{row[0]}}">delete</a></td>
-        <td><a href="/edit/{{row[0]}}">Edit</a></td>
     </tr>
     {%endfor%}
    

@@ -1,7 +1,10 @@
 
+from datetime import datetime
 import database
 from crypt import methods
 from flask import Flask,redirect, render_template, request,url_for
+
+from bucket import addBucket
 app = Flask(__name__,template_folder='Template')
 @app.route("/")
 def home():
@@ -24,21 +27,14 @@ def edit(id):
     return render_template('edit.html',user=user)
 
 @app.route("/editthis/<id>",methods=["POST"])
+
 def editthis(id):
+
+    from datetime import date
     user=request.form
     print(user)
-    database.update(id,user['name'],user['roll'],user['class'])
+    database.update(id,user['name'],user['roll'],datetime.now())
     return redirect (url_for('show'))
-
-
-
-
-
-
-
-
-
-
 
 
 @app.route("/show")
@@ -51,8 +47,10 @@ def show():
 @app.route("/addthis",methods=['POST','GET'])
 def addthis():
     user=request.form
-    database.insert(user['name'],user['roll'],user['class'])
+    database.insert(user['name'],user['location'],datetime.now())
+    print('added')
+    addBucket(user['name'],user['location'])
     return redirect (url_for('home'))
 
 if __name__=='__main__':
-    app.run(debug=True,host='0.0.0.0')
+    app.run(debug=True,host='0.0.0.0',port=5001)
